@@ -7,5 +7,5 @@ Route::get('/', function () {
 });
 
 Route::get('/register', function () {
-    return view('pages/register');
+    return view('pages/auth/register');
 });
