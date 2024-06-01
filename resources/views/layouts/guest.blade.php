@@ -26,5 +26,6 @@
         <p>© 2024 {{ env('APP_NAME') }}. All rights reserved.</p>
     </div>
 </footer>
+@livewireScripts
 </body>
 </html>
