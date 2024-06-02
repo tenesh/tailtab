@@ -1,5 +1,15 @@
 import React from 'react';
 
-export default function NavigationBar() {
-    return <nav></nav>;
+interface NavigationBarProps {
+    auth: any;
+    isOpen: boolean;
+    onClose: () => void;
+}
+
+export default function NavigationBar(props: NavigationBarProps) {
+    return (
+            <nav>
+                <a href="">Pricing</a>
+            </nav>
+    );
 }
