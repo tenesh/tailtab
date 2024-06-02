@@ -9,8 +9,12 @@ const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
-    resolve: (name) => resolvePageComponent(`./Pages/${name}.tsx`, import.meta.glob('./Pages/**/*.tsx')),
-    setup({el, App, props}) {
+    resolve: (name) =>
+        resolvePageComponent(
+            `./pages/${name}.tsx`,
+            import.meta.glob('./pages/**/*.tsx'),
+        ),
+    setup({ el, App, props }) {
         const root = createRoot(el);
 
         root.render(<App {...props} />);
@@ -18,4 +22,4 @@ createInertiaApp({
     progress: {
         color: '#4B5563',
     },
-}).then(r => {});
+}).then((r) => {});
