@@ -1,9 +1,5 @@
-import React, { PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 
-interface PrivateLayoutProps extends PropsWithChildren {
-    auth: any;
-}
-
-export default function PrivateLayout({ auth, children }: PrivateLayoutProps) {
+export default function PrivateLayout({ children }: PropsWithChildren) {
     return <main>{children}</main>;
 }

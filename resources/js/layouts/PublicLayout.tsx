@@ -1,29 +1,24 @@
-import React, {PropsWithChildren, useState} from 'react';
+import { PropsWithChildren, useState } from 'react';
 import NavigationBar from '@/components/public/NavigationBar';
+import Footer from '@/components/public/Footer';
 
-interface PublicLayoutProps extends PropsWithChildren {
-    auth: any;
-}
-
-export default function PublicLayout({auth, children}: PublicLayoutProps) {
-
-    const appName = import.meta.env.VITE_APP_NAME;
+export default function PublicLayout({ children }: PropsWithChildren) {
     const [open, setOpen] = useState(false);
 
     return (
         <>
-            <header>
+            <header className="py-3">
                 <NavigationBar
-                    auth={auth}
                     isOpen={open}
-                    onClose={
-                        () => {
-                            setOpen(false)
-                        }}
+                    onClose={() => {
+                        setOpen(!open);
+                    }}
                 />
             </header>
-            <main>{children}</main>
-            <footer></footer>
+            <main className="flex-grow w-full max-w-[85rem] mx-auto text-black p-4">
+                {children}
+            </main>
+            <Footer />
         </>
     );
 }

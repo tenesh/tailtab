@@ -1,9 +1,5 @@
-import React, { PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 
-interface AuthLayoutProps extends PropsWithChildren {
-    auth: any;
-}
-
-export default function AuthLayout({ auth, children }: AuthLayoutProps) {
+export default function AuthLayout({ children }: PropsWithChildren) {
     return <main>{children}</main>;
 }
