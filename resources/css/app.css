@@ -13,6 +13,6 @@ body {
 	font-style: normal;
 }
 
-#app {
-	@apply flex flex-col min-h-screen w-full;
+button:disabled {
+	@apply bg-grey-600 hover:bg-grey-600
 }

@@ -1,5 +1,12 @@
 import { PropsWithChildren } from 'react';
 
 export default function PrivateLayout({ children }: PropsWithChildren) {
-    return <main>{children}</main>;
+    return (
+        <>
+            <header className="py-3"></header>
+            <main className="min-h-screen flex flex-col w-full max-w-[85rem] mx-auto text-black p-4">
+                {children}
+            </main>
+        </>
+    );
 }
