@@ -13,7 +13,7 @@ export default function RegisterUserPage() {
 
     function submit(e: FormEvent) {
         e.preventDefault();
-        post('/register');
+        post(route('register'));
     }
 
     return (
@@ -99,11 +99,11 @@ export default function RegisterUserPage() {
                     </div>
                 </form>
                 <p className="text-center text-xs font-medium max-w-lg mx-auto">
-                    By continuing, you agree to Tailtab&apos;s
+                    By continuing, you agree to Tailtab&apos;s{' '}
                     <Link href="/terms" className="underline">
-                        Terms of Service
-                    </Link>
-                    and
+                        Terms of Service{' '}
+                    </Link>{' '}
+                    and{' '}
                     <Link href="/privacy" className="underline">
                         Privacy Policy
                     </Link>

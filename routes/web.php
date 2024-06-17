@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginUserController;
 use App\Http\Controllers\Auth\LogoutUserController;
 use App\Http\Controllers\Auth\RegisterUserController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\VerifyEmailNotificationController;
 use App\Http\Controllers\Auth\VerifyEmailPromptController;
@@ -27,7 +28,7 @@ Route::middleware('guest')->group(function () {
     Route::get('login', [LoginUserController::class, 'view'])
         ->name('login');
 
-    Route::post('login', [LoginUserController::class, 'view'])
+    Route::post('login', [LoginUserController::class, 'store'])
         ->name('login.store');
 
     Route::post('logout', [LogoutUserController::class, 'destroy'])
@@ -39,11 +40,11 @@ Route::middleware('guest')->group(function () {
     Route::post('forgot-password', [ForgotPasswordController::class, 'store'])
         ->name('password.email');
 
-    Route::get('reset-password/{token}', [ForgotPasswordController::class, 'view'])
+    Route::get('reset-password/{token}', [ResetPasswordController::class, 'view'])
         ->name('password.reset');
 
-    Route::post('reset-password', [ForgotPasswordController::class, 'store'])
-        ->name('password.email');
+    Route::post('reset-password', [ResetPasswordController::class, 'store'])
+        ->name('password.store');
 });
 
 

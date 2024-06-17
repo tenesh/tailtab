@@ -2,7 +2,7 @@ import { usePage, Link, useForm } from '@inertiajs/react';
 import { PageProps } from '@/types';
 import { FormEvent } from 'react';
 
-export default function LoginUserPage() {
+export default function LoginUserPage({ status }: { status?: string }) {
     const { appName } = usePage<PageProps>().props;
 
     const { data, setData, post, processing, errors } = useForm({
@@ -12,7 +12,7 @@ export default function LoginUserPage() {
 
     function submit(e: FormEvent) {
         e.preventDefault();
-        post('/login');
+        post(route('login'));
     }
 
     return (
@@ -48,7 +48,20 @@ export default function LoginUserPage() {
                         )}
                     </div>
                     <div className="flex flex-col gap-2">
-                        <label htmlFor="password">Password</label>
+                        <label
+                            htmlFor="password"
+                            className="flex justify-between"
+                        >
+                            <span>Password</span>
+                            <span>
+                                <Link
+                                    href="/forgot-password"
+                                    className="underline text-xs"
+                                >
+                                    Forgot Password?
+                                </Link>
+                            </span>
+                        </label>
                         <input
                             type="password"
                             name="password"
@@ -61,6 +74,11 @@ export default function LoginUserPage() {
                         {errors.password && (
                             <div className="text-error-600 pb-1">
                                 {errors.password}
+                            </div>
+                        )}
+                        {status === 'invalid-credentials' && (
+                            <div className="text-error-600 pb-1">
+                                Incorrect username or password.
                             </div>
                         )}
                     </div>
@@ -81,11 +99,11 @@ export default function LoginUserPage() {
                     </div>
                 </form>
                 <p className="text-center text-xs font-medium max-w-lg mx-auto">
-                    By continuing, you agree to Tailtab&apos;s
+                    By continuing, you agree to Tailtab&apos;s{' '}
                     <Link href="/terms" className="underline">
-                        Terms of Service
-                    </Link>
-                    and
+                        Terms of Service{' '}
+                    </Link>{' '}
+                    and{' '}
                     <Link href="/privacy" className="underline">
                         Privacy Policy
                     </Link>
