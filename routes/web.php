@@ -9,6 +9,8 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\VerifyEmailNotificationController;
 use App\Http\Controllers\Auth\VerifyEmailPromptController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\OnboardUserController;
+use App\Http\Middleware\EnsureUserOnboarded;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -63,6 +65,14 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
+
+    Route::get('onboard', [OnboardUserController::class, 'view'])
+        ->name('onboard');
+    Route::post('onboard', [OnboardUserController::class, 'store'])
+        ->name('onboard.store');
+});
+
+Route::middleware(['auth', 'verified', EnsureUserOnboarded::class])->group(function () {
 
     Route::get('dashboard', [DashboardController::class, 'view'])
         ->name('dashboard');

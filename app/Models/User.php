@@ -11,6 +11,8 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
 
+    protected $onboardedName = 'onboarded';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -20,6 +22,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'onboarded'
     ];
 
     /**
@@ -43,5 +46,25 @@ class User extends Authenticatable implements MustVerifyEmail
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Get the value for the "onboarded".
+     *
+     * @return bool
+     */
+    public function hasOnboard(): bool
+    {
+        return  $this->{$this->getOnboardedName()};
+    }
+
+    /**
+     * Get the column name for the "onboarded".
+     *
+     * @return string
+     */
+    public function getOnboardedName(): string
+    {
+        return $this->onboardedName;
     }
 }
