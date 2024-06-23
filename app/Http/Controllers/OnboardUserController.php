@@ -21,9 +21,15 @@ class OnboardUserController extends Controller
     {
 
         $request->validate([
+            'first_name' => 'required|string|lowercase|max:255',
+            'last_name' => 'required|string|lowercase|max:255',
             'organization_name' => 'required|string|lowercase|max:255',
+            'organization_description' => 'nullable|string',
             'workspace_name' => 'required|string|lowercase|max:255',
+            'workspace_description' => 'nullable|string',
         ]);
+
+
 
 
         return redirect(route('dashboard', absolute: false));
