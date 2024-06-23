@@ -24,9 +24,6 @@ class OnboardUserController extends Controller
             'first_name' => 'required|string|lowercase|max:255',
             'last_name' => 'required|string|lowercase|max:255',
             'organization_name' => 'required|string|lowercase|max:255',
-            'organization_description' => 'nullable|string',
-            'workspace_name' => 'required|string|lowercase|max:255',
-            'workspace_description' => 'nullable|string',
         ]);
 
 
