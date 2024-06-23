@@ -1,6 +1,7 @@
 import { usePage, useForm } from '@inertiajs/react';
 import { PageProps } from '@/types';
 import { FormEvent } from 'react';
+import { Button, Input } from '@nextui-org/react';
 
 export default function ForgotPasswordPage({ status }: { status?: string }) {
     const { appName } = usePage<PageProps>().props;
@@ -42,30 +43,24 @@ export default function ForgotPasswordPage({ status }: { status?: string }) {
                             you a password reset link that will allow you to
                             choose a new one.
                         </p>
-                        <div className="flex flex-col gap-2">
-                            <label htmlFor="emai">Email</label>
-                            <input
-                                type="email"
-                                name="email"
-                                value={data.email}
-                                onChange={(event) =>
-                                    setData('email', event.target.value)
-                                }
-                                className="border-[1px] rounded-md px-4 py-2"
-                            />
-                            {errors.email && (
-                                <div className="text-error-600 pb-1">
-                                    {errors.email}
-                                </div>
-                            )}
-                        </div>
-                        <button
-                            disabled={processing}
-                            className="my-5 bg-primary-500 rounded-md text-white text-center px-4 py-2 hover:bg-primary-600"
+                        <Input
+                            type="email"
+                            label="Email"
+                            value={data.email}
+                            onChange={(event) =>
+                                setData('email', event.target.value)
+                            }
+                            size="md"
+                            isInvalid={!!errors.email}
+                            errorMessage={errors.email}
+                        />
+                        <Button
+                            isLoading={processing}
+                            color="primary"
                             type="submit"
                         >
                             Send password reset link
-                        </button>
+                        </Button>
                     </form>
                 )}
             </div>

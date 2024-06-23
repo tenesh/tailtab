@@ -1,6 +1,7 @@
 import { usePage, useForm } from '@inertiajs/react';
 import { PageProps } from '@/types';
 import { FormEvent, useState } from 'react';
+import { Button } from '@nextui-org/react';
 
 export default function VerifyEmailPromptPage() {
     const { post, processing } = useForm({});
@@ -50,12 +51,13 @@ export default function VerifyEmailPromptPage() {
                             </p>
                         </>
                     )}
-                    <button
-                        disabled={isResent || processing}
-                        className="my-5 bg-primary-500 rounded-md text-white text-center px-4 py-2 hover:bg-primary-600"
+                    <Button
+                        isLoading={processing}
+                        isDisabled={isResent}
+                        color="primary"
                     >
                         Resend verification link
-                    </button>
+                    </Button>
                 </form>
             </div>
         </main>

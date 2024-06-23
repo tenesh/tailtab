@@ -12,7 +12,3 @@ body {
 	font-optical-sizing: auto;
 	font-style: normal;
 }
-
-button:disabled {
-	@apply bg-grey-600 hover:bg-grey-600
-}

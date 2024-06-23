@@ -1,6 +1,7 @@
 import { usePage, Link, useForm } from '@inertiajs/react';
 import { PageProps } from '@/types';
 import { FormEvent } from 'react';
+import { Input, Button } from '@nextui-org/react';
 
 export default function RegisterUserPage() {
     const { appName } = usePage<PageProps>().props;
@@ -17,7 +18,7 @@ export default function RegisterUserPage() {
     }
 
     return (
-        <main className="min-h-screen flex flex-col w-full text-black p-4">
+        <main className="min-h-screen flex flex-col w-full p-4">
             <p className="text-secondary-900 text-xl">{appName}</p>
             <div className="flex flex-col w-full max-w-md m-auto space-y-10">
                 <div>
@@ -31,64 +32,46 @@ export default function RegisterUserPage() {
                     onSubmit={submit}
                     noValidate={true}
                 >
-                    <div className="flex flex-col gap-2">
-                        <label htmlFor="emai">Name</label>
-                        <input
-                            type="text"
-                            name="name"
-                            value={data.name}
-                            onChange={(event) =>
-                                setData('name', event.target.value)
-                            }
-                            className="border-[1px] rounded-md px-4 py-2"
-                        />
-                        {errors.name && (
-                            <div className="text-error-600 pb-1">
-                                {errors.name}
-                            </div>
-                        )}
-                    </div>
-                    <div className="flex flex-col gap-2">
-                        <label htmlFor="emai">Email</label>
-                        <input
-                            type="email"
-                            name="email"
-                            value={data.email}
-                            onChange={(event) =>
-                                setData('email', event.target.value)
-                            }
-                            className="border-[1px] rounded-md px-4 py-2"
-                        />
-                        {errors.email && (
-                            <div className="text-error-600 pb-1">
-                                {errors.email}
-                            </div>
-                        )}
-                    </div>
-                    <div className="flex flex-col gap-2">
-                        <label htmlFor="password">Password</label>
-                        <input
-                            type="password"
-                            name="password"
-                            value={data.password}
-                            onChange={(event) =>
-                                setData('password', event.target.value)
-                            }
-                            className="border-[1px] rounded-md px-4 py-2"
-                        />
-                        {errors.password && (
-                            <div className="text-error-600 pb-1">
-                                {errors.password}
-                            </div>
-                        )}
-                    </div>
-                    <button
-                        disabled={processing}
-                        className="my-5 bg-primary-500 rounded-md text-white text-center px-4 py-2 hover:bg-primary-600"
+                    <Input
+                        type="text"
+                        label="Name"
+                        value={data.name}
+                        onChange={(event) =>
+                            setData('name', event.target.value)
+                        }
+                        size="md"
+                        isInvalid={!!errors.name}
+                        errorMessage={errors.name}
+                    />
+                    <Input
+                        type="email"
+                        label="Email"
+                        value={data.email}
+                        onChange={(event) =>
+                            setData('email', event.target.value)
+                        }
+                        size="md"
+                        isInvalid={!!errors.email}
+                        errorMessage={errors.email}
+                    />
+                    <Input
+                        type="password"
+                        label="Password"
+                        value={data.password}
+                        onChange={(event) =>
+                            setData('password', event.target.value)
+                        }
+                        size="md"
+                        isInvalid={!!errors.password}
+                        errorMessage={errors.password}
+                    />
+                    <Button
+                        isLoading={processing}
+                        color="primary"
                         type="submit"
                     >
                         Sign Up
-                    </button>
+                    </Button>
                     <div className="flex flex-col gap-2 text-center">
                         <p>
                             Have an account?{' '}

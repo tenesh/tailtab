@@ -38,13 +38,9 @@ export default function DashboardPage() {
                     onSubmit={submit}
                     noValidate={true}
                 >
-                    <p className='text-lg font-medium'>
-                        Account
-                    </p>
+                    <p className="text-lg font-medium">Account</p>
                     <div className="flex flex-col gap-2">
-                        <label htmlFor="first_name">
-                            First Name
-                        </label>
+                        <label htmlFor="first_name">First Name</label>
                         <input
                             type="text"
                             name="first_name"
@@ -61,9 +57,7 @@ export default function DashboardPage() {
                         )}
                     </div>
                     <div className="flex flex-col gap-2">
-                        <label htmlFor="last_name">
-                            Last Name
-                        </label>
+                        <label htmlFor="last_name">Last Name</label>
                         <input
                             type="text"
                             name="last_name"
@@ -79,13 +73,9 @@ export default function DashboardPage() {
                             </div>
                         )}
                     </div>
-                    <p className='pt-4 text-lg font-medium'>
-                        Organization
-                    </p>
+                    <p className="pt-4 text-lg font-medium">Organization</p>
                     <div className="flex flex-col gap-2">
-                        <label htmlFor="organization_name">
-                            Name
-                        </label>
+                        <label htmlFor="organization_name">Name</label>
                         <input
                             type="text"
                             name="organization_name"
@@ -109,7 +99,10 @@ export default function DashboardPage() {
                             name="organization_description"
                             value={data.organization_description}
                             onChange={(event) =>
-                                setData('organization_description', event.target.value)
+                                setData(
+                                    'organization_description',
+                                    event.target.value,
+                                )
                             }
                             className="border-[1px] rounded-md px-4 py-2"
                         />
@@ -119,9 +112,7 @@ export default function DashboardPage() {
                             </div>
                         )}
                     </div>
-                    <p className='pt-4 text-lg font-medium'>
-                        Workspace
-                    </p>
+                    <p className="pt-4 text-lg font-medium">Workspace</p>
                     <div className="flex flex-col gap-2">
                         <label htmlFor="workspace_name">Name</label>
                         <input
@@ -140,12 +131,17 @@ export default function DashboardPage() {
                         )}
                     </div>
                     <div className="flex flex-col gap-2">
-                        <label htmlFor="workspace_description">Description</label>
+                        <label htmlFor="workspace_description">
+                            Description
+                        </label>
                         <textarea
                             name="workspace_description"
                             value={data.workspace_description}
                             onChange={(event) =>
-                                setData('workspace_description', event.target.value)
+                                setData(
+                                    'workspace_description',
+                                    event.target.value,
+                                )
                             }
                             className="border-[1px] rounded-md px-4 py-2"
                         />

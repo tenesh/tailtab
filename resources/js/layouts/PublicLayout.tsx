@@ -3,6 +3,7 @@ import { Link, usePage } from '@inertiajs/react';
 import { PageProps } from '@/types';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
+import { Button } from '@nextui-org/react';
 
 export default function PublicLayout({ children }: PropsWithChildren) {
     const [open, setOpen] = useState(false);
@@ -50,14 +51,15 @@ export default function PublicLayout({ children }: PropsWithChildren) {
                         )}
                     </nav>
                     <div className="lg:hidden">
-                        <button
-                            className="lg:hidden"
+                        <Button
+                            isIconOnly
+                            variant="light"
                             onClick={() => {
                                 setOpen(!open);
                             }}
                         >
                             <Bars3Icon className="w-8 text-secondary-900" />
-                        </button>
+                        </Button>
                         <motion.div
                             initial="closed"
                             animate={open ? 'open' : 'closed'}
@@ -65,20 +67,21 @@ export default function PublicLayout({ children }: PropsWithChildren) {
                                 open: { opacity: 1, width: '100%' },
                                 closed: { opacity: 0, width: 0 },
                             }}
-                            className="absolute top-0 left-0 w-full h-full py-3 bg-secondary-50 lg:hidden"
+                            className="fixed top-0 left-0 w-full h-full py-3 bg-secondary-50 lg:hidden"
                         >
                             <div className="flex justify-between w-full text-secondary-900 p-4">
                                 <p className="text-secondary-900 text-3xl">
                                     {appName}
                                 </p>
-                                <button
-                                    className="lg:hidden"
+                                <Button
+                                    isIconOnly
+                                    variant="light"
                                     onClick={() => {
                                         setOpen(!open);
                                     }}
                                 >
                                     <XMarkIcon className="w-8 text-secondary-900" />
-                                </button>
+                                </Button>
                             </div>
                             <nav className="flex flex-col w-full justify-center space-y-4 p-4 text-xl">
                                 <Link
