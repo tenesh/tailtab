@@ -15,9 +15,7 @@ return new class extends Migration
         Schema::create('workspaces', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description')->nullable();
-            $table->string('image_url')->nullable();
-            $table->boolean('default')->default(false);
+            $table->float('hour_billable_rate')->default(0);
             $table->foreignIdFor(Organization::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

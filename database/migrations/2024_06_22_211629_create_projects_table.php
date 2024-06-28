@@ -18,15 +18,12 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description')->nullable();
-            $table->string('image_url')->nullable();
-            $table->boolean('is_private')->default(false);
-            $table->boolean('is_billable')->default(false);
-            $table->boolean('is_recurring')->default(false);
+            $table->boolean('private')->default(false);
+            $table->boolean('billable')->default(false);
+            $table->boolean('recurring')->default(false);
             $table->date('start_date');
             $table->date('end_date')->nullable();
-            $table->integer('estimate_duration')->nullable();
-            $table->integer('estimate_duration_per_task')->nullable();
+            $table->float('hour_billable_rate')->default(0);
             $table->enum('status', ProjectStatus::values());
             $table->foreignIdFor(Workspace::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Organization::class)->constrained()->cascadeOnDelete();

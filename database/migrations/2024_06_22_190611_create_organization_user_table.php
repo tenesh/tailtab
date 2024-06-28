@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignIdFor(Organization::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->enum('role', OrganizationRole::values());
-            $table->boolean('is_active');
+            $table->boolean('active');
             $table->timestamps();
         });
     }

@@ -14,11 +14,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('workspace_user', function (Blueprint $table) {
+        Schema::create('user_workspace', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Workspace::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->enum('roles',WorkspaceRole::values());
+            $table->float('hour_billable_rate')->default(0);
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('workspace_user');
+        Schema::dropIfExists('user_workspace');
     }
 };

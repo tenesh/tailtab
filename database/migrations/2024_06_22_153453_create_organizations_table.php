@@ -14,9 +14,8 @@ return new class extends Migration
         Schema::create('organizations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description')->nullable();
             $table->string('image_url')->nullable();
-            $table->boolean('default')->default(false);
+            $table->string('currency_code')->default('USD');
             $table->timestamps();
         });
     }

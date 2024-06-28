@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignIdFor(Project::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->enum('roles',ProjectRole::values());
+            $table->float('hour_billable_rate')->default(0);
             $table->timestamps();
         });
     }

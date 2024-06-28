@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\Gender;
+use App\Models\Organization;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -20,6 +21,7 @@ return new class extends Migration
             $table->enum('gender', Gender::values());
             $table->date('birth_date');
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Organization::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
