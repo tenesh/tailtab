@@ -42,172 +42,166 @@ class Project extends Model
     public function getName(): string
     {
 
-        return $this->attributes[$this->getNameAttributeKey()];
+        return $this->attributes[$this->getNameKey()];
     }
 
     public function setName(string $value): void
     {
 
-        $this->attributes[$this->getNameAttributeKey()] = $value;
+        $this->attributes[$this->getNameKey()] = $value;
     }
 
     public function getPrivate(): bool
     {
 
-        return $this->attributes[$this->getPrivateAttributeKey()];
+        return $this->attributes[$this->getPrivateKey()];
     }
 
     public function setPrivate(bool $value): void
     {
 
-        $this->attributes[$this->getPrivateAttributeKey()] = $value;
+        $this->attributes[$this->getPrivateKey()] = $value;
     }
 
     public function getBillable(): bool
     {
 
-        return $this->attributes[$this->getBillableAttributeKey()];
+        return $this->attributes[$this->getBillableKey()];
     }
 
     public function setBillable(bool $value): void
     {
 
-        $this->attributes[$this->getBillableAttributeKey()] = $value;
+        $this->attributes[$this->getBillableKey()] = $value;
     }
 
     public function getRecurring(): bool
     {
 
-        return $this->attributes[$this->getRecurringAttributeKey()];
+        return $this->attributes[$this->getRecurringKey()];
     }
 
     public function setRecurring(bool $value): void
     {
 
-        $this->attributes[$this->getRecurringAttributeKey()] = $value;
+        $this->attributes[$this->getRecurringKey()] = $value;
     }
 
     public function getStartDate(): Date
     {
 
-        return $this->attributes[$this->getStartDateAttributeKey()];
+        return $this->attributes[$this->getStartDateKey()];
     }
 
     public function setStartDate(Date $value): void
     {
 
-        $this->attributes[$this->getStartDateAttributeKey()] = $value;
+        $this->attributes[$this->getStartDateKey()] = $value;
     }
 
     public function getEndDate(): Date
     {
 
-        return $this->attributes[$this->getEndDateAttributeKey()];
+        return $this->attributes[$this->getEndDateKey()];
     }
 
     public function setEndDate(Date $value): void
     {
 
-        $this->attributes[$this->getEndDateAttributeKey()] = $value;
+        $this->attributes[$this->getEndDateKey()] = $value;
     }
 
     public function getStatus(): ProjectStatus
     {
 
-        return $this->attributes[$this->getStatusAttributeKey()];
+        return $this->attributes[$this->getStatusKey()];
     }
 
     public function setStatus(ProjectStatus $value): void
     {
 
-        $this->attributes[$this->getStatusAttributeKey()] = $value;
+        $this->attributes[$this->getStatusKey()] = $value;
     }
 
     public function getHourBillableRate(): int
     {
 
-        return $this->attributes[$this->getHourBillableRateAttributeKey()];
+        return $this->attributes[$this->getHourBillableRateKey()];
     }
 
     public function setHourBillableRate(int $value): void
     {
 
-        $this->attributes[$this->getHourBillableRateAttributeKey()] = $value;
+        $this->attributes[$this->getHourBillableRateKey()] = $value;
     }
 
-    public function getOrganization(): BelongsTo
-    {
-
-        return $this->belongsTo(Organization::class);
-    }
-
-    public function getWorkspace(): BelongsTo
+    public function workspace(): BelongsTo
     {
 
         return $this->belongsTo(Workspace::class);
     }
 
-    public function getClient(): BelongsTo
+    public function client(): BelongsTo
     {
 
         return $this->belongsTo(Client::class);
     }
 
-    public function getTasks(): HasMany
+    public function tasks(): HasMany
     {
 
         return $this->hasMany(Task::class);
     }
 
-    public function getMembers(): BelongsToMany
+    public function users(): BelongsToMany
     {
 
         return $this->belongsToMany(User::class);
     }
 
-    public function getNameAttributeKey(): string
+    public function getNameKey(): string
     {
 
         return 'name';
     }
 
-    public function getPrivateAttributeKey(): string
+    public function getPrivateKey(): string
     {
 
         return 'private';
     }
 
-    public function getBillableAttributeKey(): string
+    public function getBillableKey(): string
     {
 
         return 'billable';
     }
 
-    public function getRecurringAttributeKey(): string
+    public function getRecurringKey(): string
     {
 
         return 'recurring';
     }
 
-    public function getStartDateAttributeKey(): string
+    public function getStartDateKey(): string
     {
 
         return 'start_date';
     }
 
-    public function getEndDateAttributeKey(): string
+    public function getEndDateKey(): string
     {
 
         return 'end_date';
     }
 
-    public function getStatusAttributeKey(): string
+    public function getStatusKey(): string
     {
 
         return 'status';
     }
 
-    public function getHourBillableRateAttributeKey(): string
+    public function getHourBillableRateKey(): string
     {
 
         return 'hour_billable_rate';

@@ -30,88 +30,82 @@ class Task extends Model
     public function getTitle(): string
     {
 
-        return $this->attributes[$this->getTitleAttributeKey()];
+        return $this->attributes[$this->getTitleKey()];
     }
 
     public function setTitle(string $value): void
     {
 
-        $this->attributes[$this->getTitleAttributeKey()] = $value;
+        $this->attributes[$this->getTitleKey()] = $value;
     }
 
     public function getDescription(): string
     {
 
-        return $this->attributes[$this->getDescriptionAttributeKey()];
+        return $this->attributes[$this->getDescriptionKey()];
     }
 
     public function setDescription(string $value): void
     {
 
-        $this->attributes[$this->getDescriptionAttributeKey()] = $value;
+        $this->attributes[$this->getDescriptionKey()] = $value;
     }
 
     public function getStartDateTime(): DateTime
     {
 
-        return $this->attributes[$this->getStartDateTimeAttributeKey()];
+        return $this->attributes[$this->getStartDateTimeKey()];
     }
 
     public function setStartDateTime(DateTime $value): void
     {
 
-        $this->attributes[$this->getStartDateTimeAttributeKey()] = $value;
+        $this->attributes[$this->getStartDateTimeKey()] = $value;
     }
 
     public function getEndDateTime(): DateTime
     {
 
-        return $this->attributes[$this->getEndDateTimeAttributeKey()];
+        return $this->attributes[$this->getEndDateTimeKey()];
     }
 
     public function setEndDateTime(DateTime $value): void
     {
 
-        $this->attributes[$this->getEndDateTimeAttributeKey()] = $value;
+        $this->attributes[$this->getEndDateTimeKey()] = $value;
     }
 
-    public function getOrganization(): BelongsTo
-    {
-
-        return $this->belongsTo(Organization::class);
-    }
-
-    public function getUser(): BelongsTo
+    public function user(): BelongsTo
     {
 
         return $this->belongsTo(User::class);
     }
 
-    public function getProject(): BelongsTo
+    public function project(): BelongsTo
     {
 
         return $this->belongsTo(Project::class);
     }
 
-    public function getTitleAttributeKey(): string
+    public function getTitleKey(): string
     {
 
         return 'title';
     }
 
-    public function getDescriptionAttributeKey(): string
+    public function getDescriptionKey(): string
     {
 
         return 'description';
     }
 
-    public function getStartDateTimeAttributeKey(): string
+    public function getStartDateTimeKey(): string
     {
 
         return 'start_datetime';
     }
 
-    public function getEndDateTimeAttributeKey(): string
+    public function getEndDateTimeKey(): string
     {
 
         return 'end_datetime';

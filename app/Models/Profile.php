@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Date;
 
-class Account extends Model
+class Profile extends Model
 {
     use HasFactory;
 
@@ -29,75 +29,75 @@ class Account extends Model
     public function getFirstName(): string
     {
 
-        return $this->attributes[$this->getFirstNameAttributeKey()];
+        return $this->attributes[$this->getFirstNameKey()];
     }
 
     public function setFirstName(string $value): void
     {
 
-        $this->attributes[$this->getFirstNameAttributeKey()] = $value;
+        $this->attributes[$this->getFirstNameKey()] = $value;
     }
 
     public function getLastName(): string
     {
 
-        return $this->attributes[$this->getLastNameAttributeKey()];
+        return $this->attributes[$this->getLastNameKey()];
     }
 
     public function setLastName(string $value): void
     {
 
-        $this->attributes[$this->getLastNameAttributeKey()] = $value;
+        $this->attributes[$this->getLastNameKey()] = $value;
     }
 
     public function getGender(): string
     {
 
-        return $this->attributes[$this->getGenderAttributeKey()];
+        return $this->attributes[$this->getGenderKey()];
     }
 
     public function setGender(string $value): void
     {
 
-        $this->attributes[$this->getGenderAttributeKey()] = $value;
+        $this->attributes[$this->getGenderKey()] = $value;
     }
 
     public function getBirthDate(): Date
     {
 
-        return $this->attributes[$this->getBirthDateAttributeKey()];
+        return $this->attributes[$this->getBirthDateKey()];
     }
 
     public function setBirthDate(Date $value): void
     {
 
-        $this->attributes[$this->getBirthDateAttributeKey()] = $value;
+        $this->attributes[$this->getBirthDateKey()] = $value;
     }
 
-    public function getUser(): BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function getBirthDateAttributeKey(): string
+    public function getBirthDateKey(): string
     {
 
         return 'birth_date';
     }
 
-    public function getGenderAttributeKey(): string
+    public function getGenderKey(): string
     {
 
         return 'gender';
     }
 
-    public function getFirstNameAttributeKey(): string
+    public function getFirstNameKey(): string
     {
 
         return 'first_name';
     }
 
-    public function getLastNameAttributeKey(): string
+    public function getLastNameKey(): string
     {
 
         return 'last_name';

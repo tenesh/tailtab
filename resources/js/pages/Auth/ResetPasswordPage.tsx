@@ -1,7 +1,7 @@
-import { usePage, useForm } from '@inertiajs/react';
-import { PageProps } from '@/types';
+import { useForm } from '@inertiajs/react';
 import { FormEvent } from 'react';
 import { Input, Button } from '@nextui-org/react';
+import GuestLayout from '@/layouts/GuestLayout';
 
 export default function ResetPasswordPage({
     token,
@@ -10,8 +10,6 @@ export default function ResetPasswordPage({
     token: string;
     email: string;
 }) {
-    const { appName } = usePage<PageProps>().props;
-
     const { data, setData, post, processing, errors } = useForm({
         token: token,
         email: email,
@@ -25,8 +23,7 @@ export default function ResetPasswordPage({
     }
 
     return (
-        <main className="min-h-screen flex flex-col w-full text-black p-4">
-            <p className="text-secondary-900 text-xl">{appName}</p>
+        <GuestLayout>
             <div className="flex flex-col w-full max-w-md m-auto space-y-10">
                 <div>
                     <h1 className="text-secondary-900 text-3xl pb-1">
@@ -74,6 +71,6 @@ export default function ResetPasswordPage({
                     </Button>
                 </form>
             </div>
-        </main>
+        </GuestLayout>
     );
 }

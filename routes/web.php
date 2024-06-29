@@ -9,23 +9,9 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\VerifyEmailNotificationController;
 use App\Http\Controllers\Auth\VerifyEmailPromptController;
 use App\Http\Controllers\Dashboard\DashboardController;
-use App\Http\Controllers\Onboard\OnboardUserController;
-use App\Http\Middleware\EnsureUserOnboarded;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
-
-Route::get('/', function () {
-
-    return Inertia::render('HomePage');
-});
 
 Route::middleware('guest')->group(function () {
-
-    Route::get('register', [RegisterUserController::class, 'view'])
-        ->name('register');
-
-    Route::post('register', [RegisterUserController::class, 'store'])
-        ->name('register.store');
 
     Route::get('login', [LoginUserController::class, 'view'])
         ->name('login');
@@ -66,15 +52,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    Route::get('onboard', [OnboardUserController::class, 'view'])
-        ->name('onboard');
-    Route::post('onboard', [OnboardUserController::class, 'store'])
-        ->name('onboard.store');
-});
-
-Route::middleware(['auth', 'verified', EnsureUserOnboarded::class])->group(function () {
-
-    Route::get('dashboard', [DashboardController::class, 'view'])
+    Route::get('/', [DashboardController::class, 'view'])
         ->name('dashboard');
 });
 

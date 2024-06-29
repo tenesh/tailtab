@@ -1,6 +1,5 @@
 <?php
 
-use App\Enums\ProjectRole;
 use App\Models\Project;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
@@ -18,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Project::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-            $table->enum('roles',ProjectRole::values());
             $table->float('hour_billable_rate')->default(0);
             $table->timestamps();
         });

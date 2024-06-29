@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -35,30 +35,12 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
-    public function getOnboarded(): bool
-    {
-
-        return $this->attributes[$this->getOnboardedAttributeKey()];
+    public function profile(): HasOne {
+        return $this->hasOne(Profile::class);
     }
 
-    public function setOnboarded(bool $value): void
+    public function organization(): BelongsTo
     {
-
-        $this->attributes[$this->getOnboardedAttributeKey()] = $value;
-    }
-
-    public function getAccount(): HasOne {
-        return $this->hasOne(Account::class);
-    }
-
-    public function getOrganizations(): BelongsToMany
-    {
-        return $this->belongsToMany(Organization::class);
-    }
-
-    public function getOnboardedAttributeKey(): string
-    {
-
-        return 'onboarded';
+        return $this->belongsTo(Organization::class);
     }
 }

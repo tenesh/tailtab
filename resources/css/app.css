@@ -7,8 +7,19 @@
 @tailwind utilities;
 
 
+html {
+	height: 100dvh;
+}
+
 body {
+	display: flex;
+	min-height: 100%;
 	font-family: "Plus Jakarta Sans", sans-serif;
 	font-optical-sizing: auto;
 	font-style: normal;
+}
+
+#app {
+	min-width: 100%;
+	min-height: 100%;
 }

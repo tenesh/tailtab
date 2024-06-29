@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Enums\OrganizationRole;
+use App\Enums\CurrencyAlpha3;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -15,94 +15,76 @@ class Organization extends Model
     protected $fillable = [
         'name',
         'image_url',
-        'currency_code',
+        'currency',
     ];
 
-    public function getCurrencyCode(): string
+    public function getCurrency(): CurrencyAlpha3
     {
 
-        return $this->attributes[$this->getCurrencyCodeAttributeKey()];
+        return $this->attributes[$this->getCurrencyKey()];
     }
 
-    public function setCurrencyCode(string $value): void
+    public function setCurrency(CurrencyAlpha3 $value): void
     {
 
-        $this->attributes[$this->getCurrencyCodeAttributeKey()] = $value;
+        $this->attributes[$this->getCurrencyKey()] = $value;
     }
 
     public function getImageUrl(): string
     {
 
-        return $this->attributes[$this->getImageUrlAttributeKey()];
+        return $this->attributes[$this->getImageUrlKey()];
     }
 
     public function setImageUrl(string $value): void
     {
 
-        $this->attributes[$this->getImageUrlAttributeKey()] = $value;
+        $this->attributes[$this->getImageUrlKey()] = $value;
     }
 
     public function getName(): string
     {
 
-        return $this->attributes[$this->getNameAttributeKey()];
+        return $this->attributes[$this->getNameKey()];
     }
 
     public function setName(string $value): void
     {
 
-        $this->attributes[$this->getNameAttributeKey()] = $value;
+        $this->attributes[$this->getNameKey()] = $value;
     }
 
-    public function getOwner(): BelongsToMany
+    public function users(): HasMany
     {
 
-        return $this->belongsToMany(User::class)->wherePivot('role', OrganizationRole::OWNER);
+        return $this->hasMany(User::class);
     }
 
-    public function getMembers($active = false): BelongsToMany
-    {
-
-        return $this->belongsToMany(User::class)->wherePivot('is_active', $active);
-    }
-
-    public function getWorkspaces(): HasMany
+    public function workspaces(): HasMany
     {
 
         return $this->hasMany(Workspace::class);
     }
 
-    public function getProjects(): HasMany
-    {
-
-        return $this->hasMany(Project::class);
-    }
-
-    public function getClients(): HasMany
+    public function clients(): HasMany
     {
 
         return $this->hasMany(Client::class);
     }
 
-    public function getTasks(): HasMany
+    public function getCurrencyKey(): string
     {
 
-        return $this->hasMany(Task::class);
+        return 'currency';
     }
 
-    public function getCurrencyCodeAttributeKey(): string
-    {
-
-        return 'currency_code';
-    }
-
-    public function getImageUrlAttributeKey(): string
+    public function getImageUrlKey(): string
     {
 
         return 'image_url';
     }
 
-    public function getNameAttributeKey(): string
+    public function getNameKey(): string
     {
 
         return 'name';

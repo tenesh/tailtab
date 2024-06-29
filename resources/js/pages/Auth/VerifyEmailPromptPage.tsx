@@ -2,10 +2,11 @@ import { usePage, useForm } from '@inertiajs/react';
 import { PageProps } from '@/types';
 import { FormEvent, useState } from 'react';
 import { Button } from '@nextui-org/react';
+import GuestLayout from '@/layouts/GuestLayout';
 
 export default function VerifyEmailPromptPage() {
     const { post, processing } = useForm({});
-    const { appName, auth } = usePage<PageProps>().props;
+    const { auth } = usePage<PageProps>().props;
 
     const [isExpired, setIsExpired] = useState(false);
     const [isResent, setIsResent] = useState(false);
@@ -17,8 +18,7 @@ export default function VerifyEmailPromptPage() {
     }
 
     return (
-        <main className="min-h-screen flex flex-col w-full text-black p-4">
-            <p className="text-secondary-900 text-xl">{appName}</p>
+        <GuestLayout>
             <div className="flex flex-col w-full max-w-lg m-auto space-y-10">
                 <div>
                     <h1 className="text-secondary-900 text-3xl pb-1">
@@ -60,6 +60,6 @@ export default function VerifyEmailPromptPage() {
                     </Button>
                 </form>
             </div>
-        </main>
+        </GuestLayout>
     );
 }

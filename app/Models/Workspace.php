@@ -14,68 +14,41 @@ class Workspace extends Model
 
     protected $fillable = [
         'name',
-        'hour_billable_rate',
     ];
-
-    protected function casts(): array
-    {
-
-        return [
-            'hour_billable_rate' => 'integer',
-        ];
-    }
 
     public function getName(): string
     {
 
-        return $this->attributes[$this->getNameAttributeKey()];
+        return $this->attributes[$this->getNameKey()];
     }
 
     public function setName(string $value): void
     {
 
-        $this->attributes[$this->getNameAttributeKey()] = $value;
+        $this->attributes[$this->getNameKey()] = $value;
     }
 
-    public function getHourBillableRate(): int
-    {
-
-        return $this->attributes[$this->getHourBillableRateAttributeKey()];
-    }
-
-    public function setHourBillableRate(int $value): void
-    {
-
-        $this->attributes[$this->getHourBillableRateAttributeKey()] = $value;
-    }
-
-    public function getOrganization(): BelongsTo
+    public function organization(): BelongsTo
     {
 
         return $this->belongsTo(Organization::class);
     }
 
-    public function getProjects(): HasMany
+    public function projects(): HasMany
     {
 
         return $this->hasMany(Project::class);
     }
 
-    public function getMembers(): BelongsToMany
+    public function users(): BelongsToMany
     {
 
         return $this->belongsToMany(User::class);
     }
 
-    public function getNameAttributeKey(): string
+    public function getNameKey(): string
     {
 
         return 'name';
-    }
-
-    public function getHourBillableRateAttributeKey(): string
-    {
-
-        return 'hour_billable_rate';
     }
 }

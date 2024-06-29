@@ -1,7 +1,6 @@
 <?php
 
-use App\Enums\Gender;
-use App\Models\Organization;
+use App\Enums\UserGender;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -14,14 +13,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('accounts', function (Blueprint $table) {
+        Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
-            $table->enum('gender', Gender::values());
+            $table->enum('gender', UserGender::values());
             $table->date('birth_date');
-            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(Organization::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(User::class)->unique()->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('accounts');
+        Schema::dropIfExists('profiles');
     }
 };

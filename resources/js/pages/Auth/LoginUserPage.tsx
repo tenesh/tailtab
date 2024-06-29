@@ -1,11 +1,9 @@
-import { usePage, Link, useForm } from '@inertiajs/react';
-import { PageProps } from '@/types';
+import { Link, useForm } from '@inertiajs/react';
 import { FormEvent } from 'react';
 import { Input, Button } from '@nextui-org/react';
+import GuestLayout from '@/layouts/GuestLayout';
 
 export default function LoginUserPage({ status }: { status?: string }) {
-    const { appName } = usePage<PageProps>().props;
-
     const { data, setData, post, processing, errors } = useForm({
         email: '',
         password: '',
@@ -17,8 +15,7 @@ export default function LoginUserPage({ status }: { status?: string }) {
     }
 
     return (
-        <main className="min-h-screen flex flex-col w-full p-4">
-            <p className="text-secondary-900 text-xl">{appName}</p>
+        <GuestLayout>
             <div className="flex flex-col w-full max-w-md m-auto space-y-10">
                 <div>
                     <h1 className="text-secondary-900 text-3xl pb-1">
@@ -87,6 +84,6 @@ export default function LoginUserPage({ status }: { status?: string }) {
                     , and to receive periodic emails with updates.
                 </p>
             </div>
-        </main>
+        </GuestLayout>
     );
 }

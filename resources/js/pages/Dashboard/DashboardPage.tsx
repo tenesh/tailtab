@@ -1,5 +1,5 @@
-import PrivateLayout from '@/layouts/PrivateLayout';
+import AuthenticatedLayout from '@/layouts/AuthenticatedLayout';
 
 export default function DashboardPage() {
-    return <PrivateLayout></PrivateLayout>;
+    return <AuthenticatedLayout></AuthenticatedLayout>;
 }

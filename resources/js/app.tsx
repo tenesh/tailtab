@@ -19,7 +19,7 @@ createInertiaApp({
         const root = createRoot(el);
 
         root.render(
-            <NextUIProvider>
+            <NextUIProvider locale="en-GB" className="flex flex-col min-h-full">
                 <App {...props} />
             </NextUIProvider>,
         );

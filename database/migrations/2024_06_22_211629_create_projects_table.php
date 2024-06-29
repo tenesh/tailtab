@@ -2,7 +2,6 @@
 
 use App\Enums\ProjectStatus;
 use App\Models\Client;
-use App\Models\Organization;
 use App\Models\Workspace;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -26,7 +25,6 @@ return new class extends Migration
             $table->float('hour_billable_rate')->default(0);
             $table->enum('status', ProjectStatus::values());
             $table->foreignIdFor(Workspace::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(Organization::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Client::class)->nullable()->constrained();
             $table->timestamps();
         });

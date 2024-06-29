@@ -30,40 +30,46 @@ class Client extends Model
     public function getName(): string
     {
 
-        return $this->attributes[$this->getNameAttributeKey()];
+        return $this->attributes[$this->getNameKey()];
     }
 
     public function setName(string $value): void
     {
 
-        $this->attributes[$this->getNameAttributeKey()] = $value;
+        $this->attributes[$this->getNameKey()] = $value;
     }
 
     public function getStatus(): ClientStatus
     {
 
-        return $this->attributes[$this->getStatusAttributeKey()];
+        return $this->attributes[$this->getStatusKey()];
     }
 
     public function setStatus(ClientStatus $value): void
     {
 
-        $this->attributes[$this->getStatusAttributeKey()] = $value;
+        $this->attributes[$this->getStatusKey()] = $value;
     }
 
-    public function getOrganization(): BelongsTo
+    public function organization(): BelongsTo
     {
 
         return $this->belongsTo(Organization::class);
     }
 
-    public function getNameAttributeKey(): string
+    public function projects(): HasMany
+    {
+
+        return $this->hasMany(Project::class);
+    }
+
+    public function getNameKey(): string
     {
 
         return 'name';
     }
 
-    public function getStatusAttributeKey(): string
+    public function getStatusKey(): string
     {
 
         return 'status';
