@@ -39,102 +39,6 @@ class Project extends Model
         ];
     }
 
-    public function getName(): string
-    {
-
-        return $this->attributes[$this->getNameKey()];
-    }
-
-    public function setName(string $value): void
-    {
-
-        $this->attributes[$this->getNameKey()] = $value;
-    }
-
-    public function getPrivate(): bool
-    {
-
-        return $this->attributes[$this->getPrivateKey()];
-    }
-
-    public function setPrivate(bool $value): void
-    {
-
-        $this->attributes[$this->getPrivateKey()] = $value;
-    }
-
-    public function getBillable(): bool
-    {
-
-        return $this->attributes[$this->getBillableKey()];
-    }
-
-    public function setBillable(bool $value): void
-    {
-
-        $this->attributes[$this->getBillableKey()] = $value;
-    }
-
-    public function getRecurring(): bool
-    {
-
-        return $this->attributes[$this->getRecurringKey()];
-    }
-
-    public function setRecurring(bool $value): void
-    {
-
-        $this->attributes[$this->getRecurringKey()] = $value;
-    }
-
-    public function getStartDate(): Date
-    {
-
-        return $this->attributes[$this->getStartDateKey()];
-    }
-
-    public function setStartDate(Date $value): void
-    {
-
-        $this->attributes[$this->getStartDateKey()] = $value;
-    }
-
-    public function getEndDate(): Date
-    {
-
-        return $this->attributes[$this->getEndDateKey()];
-    }
-
-    public function setEndDate(Date $value): void
-    {
-
-        $this->attributes[$this->getEndDateKey()] = $value;
-    }
-
-    public function getStatus(): ProjectStatus
-    {
-
-        return $this->attributes[$this->getStatusKey()];
-    }
-
-    public function setStatus(ProjectStatus $value): void
-    {
-
-        $this->attributes[$this->getStatusKey()] = $value;
-    }
-
-    public function getHourBillableRate(): int
-    {
-
-        return $this->attributes[$this->getHourBillableRateKey()];
-    }
-
-    public function setHourBillableRate(int $value): void
-    {
-
-        $this->attributes[$this->getHourBillableRateKey()] = $value;
-    }
-
     public function workspace(): BelongsTo
     {
 
@@ -153,57 +57,9 @@ class Project extends Model
         return $this->hasMany(Task::class);
     }
 
-    public function users(): BelongsToMany
+    public function accounts(): BelongsToMany
     {
 
-        return $this->belongsToMany(User::class);
-    }
-
-    public function getNameKey(): string
-    {
-
-        return 'name';
-    }
-
-    public function getPrivateKey(): string
-    {
-
-        return 'private';
-    }
-
-    public function getBillableKey(): string
-    {
-
-        return 'billable';
-    }
-
-    public function getRecurringKey(): string
-    {
-
-        return 'recurring';
-    }
-
-    public function getStartDateKey(): string
-    {
-
-        return 'start_date';
-    }
-
-    public function getEndDateKey(): string
-    {
-
-        return 'end_date';
-    }
-
-    public function getStatusKey(): string
-    {
-
-        return 'status';
-    }
-
-    public function getHourBillableRateKey(): string
-    {
-
-        return 'hour_billable_rate';
+        return $this->belongsToMany(Account::class);
     }
 }

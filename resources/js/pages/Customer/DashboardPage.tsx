@@ -1,5 +1,5 @@
-import AuthenticatedLayout from '@/layouts/AuthenticatedLayout';
+import UserLayout from '@/layouts/UserLayout';
 
 export default function DashboardPage() {
-    return <AuthenticatedLayout></AuthenticatedLayout>;
+    return <UserLayout></UserLayout>;
 }

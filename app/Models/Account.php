@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Support\Facades\Date;
 
 class Account extends Model
 {
@@ -16,6 +15,8 @@ class Account extends Model
         'last_name',
         'gender',
         'birth_date',
+        'role',
+        'active'
     ];
 
     protected function casts(): array
@@ -23,55 +24,8 @@ class Account extends Model
 
         return [
             'birth_date' => 'date',
+            'active' => 'boolean'
         ];
-    }
-
-    public function getFirstName(): string
-    {
-
-        return $this->attributes[$this->getFirstNameKey()];
-    }
-
-    public function setFirstName(string $value): void
-    {
-
-        $this->attributes[$this->getFirstNameKey()] = $value;
-    }
-
-    public function getLastName(): string
-    {
-
-        return $this->attributes[$this->getLastNameKey()];
-    }
-
-    public function setLastName(string $value): void
-    {
-
-        $this->attributes[$this->getLastNameKey()] = $value;
-    }
-
-    public function getGender(): string
-    {
-
-        return $this->attributes[$this->getGenderKey()];
-    }
-
-    public function setGender(string $value): void
-    {
-
-        $this->attributes[$this->getGenderKey()] = $value;
-    }
-
-    public function getBirthDate(): Date
-    {
-
-        return $this->attributes[$this->getBirthDateKey()];
-    }
-
-    public function setBirthDate(Date $value): void
-    {
-
-        $this->attributes[$this->getBirthDateKey()] = $value;
     }
 
     public function user(): BelongsTo
@@ -79,28 +33,8 @@ class Account extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function getBirthDateKey(): string
+    public function organization(): BelongsTo
     {
-
-        return 'birth_date';
+        return $this->belongsTo(Organization::class);
     }
-
-    public function getGenderKey(): string
-    {
-
-        return 'gender';
-    }
-
-    public function getFirstNameKey(): string
-    {
-
-        return 'first_name';
-    }
-
-    public function getLastNameKey(): string
-    {
-
-        return 'last_name';
-    }
-
 }

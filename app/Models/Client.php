@@ -25,30 +25,6 @@ class Client extends Model
         ];
     }
 
-    public function getName(): string
-    {
-
-        return $this->attributes[$this->getNameKey()];
-    }
-
-    public function setName(string $value): void
-    {
-
-        $this->attributes[$this->getNameKey()] = $value;
-    }
-
-    public function getStatus(): ClientStatus
-    {
-
-        return $this->attributes[$this->getStatusKey()];
-    }
-
-    public function setStatus(ClientStatus $value): void
-    {
-
-        $this->attributes[$this->getStatusKey()] = $value;
-    }
-
     public function organization(): BelongsTo
     {
 
@@ -59,17 +35,5 @@ class Client extends Model
     {
 
         return $this->hasMany(Project::class);
-    }
-
-    public function getNameKey(): string
-    {
-
-        return 'name';
-    }
-
-    public function getStatusKey(): string
-    {
-
-        return 'status';
     }
 }

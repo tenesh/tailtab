@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 
-export default function AuthenticatedLayout({ children }: PropsWithChildren) {
+export default function UserLayout({ children }: PropsWithChildren) {
     return (
         <>
             <header className="py-3"></header>

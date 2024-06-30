@@ -16,18 +16,6 @@ class Workspace extends Model
         'name',
     ];
 
-    public function getName(): string
-    {
-
-        return $this->attributes[$this->getNameKey()];
-    }
-
-    public function setName(string $value): void
-    {
-
-        $this->attributes[$this->getNameKey()] = $value;
-    }
-
     public function organization(): BelongsTo
     {
 
@@ -40,15 +28,9 @@ class Workspace extends Model
         return $this->hasMany(Project::class);
     }
 
-    public function users(): BelongsToMany
+    public function accounts(): BelongsToMany
     {
 
-        return $this->belongsToMany(User::class);
-    }
-
-    public function getNameKey(): string
-    {
-
-        return 'name';
+        return $this->belongsToMany(Account::class);
     }
 }
