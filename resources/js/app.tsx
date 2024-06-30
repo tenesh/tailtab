@@ -18,8 +18,17 @@ createInertiaApp({
     setup({ el, App, props }) {
         const root = createRoot(el);
 
+        let classnames = 'flex flex-col min-h-full';
+
+        const auth = props.initialPage.props.auth
+
+        // @ts-ignore
+        if(auth && auth.user) {
+            classnames = 'flex flex-row min-h-full'
+        }
+
         root.render(
-            <NextUIProvider locale="en-GB" className="flex flex-col min-h-full">
+            <NextUIProvider locale="en-GB" className={classnames}>
                 <App {...props} />
             </NextUIProvider>,
         );

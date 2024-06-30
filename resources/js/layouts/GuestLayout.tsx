@@ -10,7 +10,7 @@ export default function GuestLayout({ children }: PropsWithChildren) {
             <header className="p-4">
                 <p className="text-secondary-900 text-xl">{appName}</p>
             </header>
-            <main className="flex flex-col grow w-full text-black p-4">
+            <main className="flex flex-col grow w-full p-4">
                 {children}
             </main>
             <footer className="p-4">

@@ -19,6 +19,7 @@ class HandleInertiaRequests extends Middleware
      */
     public function version(Request $request): string|null
     {
+
         return parent::version($request);
     }
 
@@ -29,11 +30,25 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+
         return [
             ...parent::share($request),
             'appName' => config('app.name'),
-            'auth' => [
-                'user' => $request->user(),
+            'auth' => $this->authConfig($request),
+        ];
+    }
+
+    public function authConfig(Request $request): array
+    {
+
+        if (!$request->user()) {
+            return [];
+        }
+
+        return [
+            'user' => [
+                'name' => $request->user()->name,
+                'email' => $request->user()->email,
             ],
         ];
     }
