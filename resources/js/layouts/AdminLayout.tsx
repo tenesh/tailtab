@@ -8,6 +8,7 @@ import {
     BuildingOfficeIcon,
     Bars3Icon,
     XMarkIcon,
+    UsersIcon,
 } from '@heroicons/react/24/solid';
 import { motion } from 'framer-motion';
 
@@ -41,6 +42,17 @@ export default function AdminLayout({ children }: PropsWithChildren) {
                         >
                             <BuildingOfficeIcon className="w-6" />
                             Organizations
+                        </Link>
+                    </li>
+                    <li
+                        className={`px-4 py-2 mx-4 rounded-md text-sm ${url === '/users' ? 'bg-primary-100' : ''}`}
+                    >
+                        <Link
+                            href={route('admin.dashboard')}
+                            className={`flex items-center gap-2 ${url === '/users' ? 'text-primary-500 font-medium' : 'text-gray-500'}`}
+                        >
+                            <UsersIcon className="w-6" />
+                            Users
                         </Link>
                     </li>
                     <li

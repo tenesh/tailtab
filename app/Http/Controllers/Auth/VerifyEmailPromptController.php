@@ -20,6 +20,6 @@ class VerifyEmailPromptController extends Controller
                 redirect()->intended(route('customer.dashboard', absolute: false).'?verified=1');
         }
 
-        return Inertia::render('Auth/VerifyEmailPromptPage', ['status' => session('status')]);
+        return Inertia::render('Auth/VerifyEmailPromptPage');
     }
 }

@@ -1,9 +1,9 @@
-import { Link, useForm } from '@inertiajs/react';
+import { Link, useForm, usePage } from '@inertiajs/react';
 import { FormEvent } from 'react';
 import { Input, Button } from '@nextui-org/react';
 import GuestLayout from '@/layouts/GuestLayout';
 
-export default function LoginUserPage({ status }: { status?: string }) {
+export default function LoginUserPage() {
     const { data, setData, post, processing, errors } = useForm({
         email: '',
         password: '',
@@ -11,7 +11,7 @@ export default function LoginUserPage({ status }: { status?: string }) {
 
     function submit(e: FormEvent) {
         e.preventDefault();
-        post(route('login'));
+        post(route('login'), {});
     }
 
     return (
@@ -51,7 +51,7 @@ export default function LoginUserPage({ status }: { status?: string }) {
                         errorMessage={errors.password}
                     />
                     <Link
-                        href="/forgot-password"
+                        href={route('password.request')}
                         className="underline text-xs ml-auto"
                     >
                         Forgot Password?

@@ -6,21 +6,22 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
-use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class ForgotPasswordController extends Controller
 {
-    public function view(): Response {
-        return Inertia::render('Auth/ForgotPasswordPage', [ 'status' => session('status'),]);
+    public function view(): Response
+    {
+        return Inertia::render('Auth/ForgotPasswordPage',);
     }
 
     /**
      * @throws ValidationException
      */
-    public function store(Request $request): RedirectResponse {
+    public function store(Request $request): RedirectResponse
+    {
 
         $request->validate([
             'email' => 'required|email',
@@ -31,11 +32,9 @@ class ForgotPasswordController extends Controller
         );
 
         if ($status == Password::RESET_LINK_SENT) {
-            return back()->with('status', 'password-reset-sent');
+            return back()->with('success', trans($status));
         }
 
-        throw ValidationException::withMessages([
-            'email' => [trans($status)],
-        ]);
+        return back()->with('error', trans($status));
     }
 }

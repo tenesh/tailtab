@@ -1,9 +1,12 @@
-import { useForm } from '@inertiajs/react';
+import { useForm, usePage } from '@inertiajs/react';
 import { FormEvent } from 'react';
 import { Button, Input } from '@nextui-org/react';
 import GuestLayout from '@/layouts/GuestLayout';
+import { PageProps } from '@/types';
 
-export default function ForgotPasswordPage({ status }: { status?: string }) {
+export default function ForgotPasswordPage() {
+    const { flash } = usePage<PageProps>().props;
+
     const { data, setData, post, processing, errors } = useForm({
         email: '',
     });
@@ -22,14 +25,14 @@ export default function ForgotPasswordPage({ status }: { status?: string }) {
                     </h1>
                 </div>
 
-                {status === 'password-reset-sent' && (
+                {flash.success && (
                     <p className="text-sm">
                         Please check the inbox of your email account, and click
                         the reset link provided.
                     </p>
                 )}
 
-                {!status && (
+                {!flash.success && (
                     <form
                         className="flex flex-col gap-4 text-sm"
                         onSubmit={submit}

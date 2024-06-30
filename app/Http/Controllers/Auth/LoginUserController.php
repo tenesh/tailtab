@@ -12,8 +12,7 @@ use Inertia\Response;
 class LoginUserController extends Controller
 {
     public function view(): Response {
-        return Inertia::render('Auth/LoginUserPage',
-        ['status' => session('status'),]);
+        return Inertia::render('Auth/LoginUserPage');
     }
 
     public function store(Request $request): RedirectResponse {
@@ -31,6 +30,6 @@ class LoginUserController extends Controller
                 redirect(route('customer.dashboard', absolute: false));
         }
 
-        return back()->with('status', 'invalid-credentials');
+        return back()->with('error', 'Invalid credentials.');
     }
 }

@@ -52,7 +52,7 @@ export default function ResetPasswordPage({
                         errorMessage={errors.password}
                     />
                     <Input
-                        type="password_confirmation"
+                        type="password"
                         label="Confirm Password"
                         value={data.password_confirmation}
                         onChange={(event) =>
