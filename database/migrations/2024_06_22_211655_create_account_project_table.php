@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\User;
-use App\Models\Workspace;
+use App\Models\Account;
+use App\Models\Project;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_workspace', function (Blueprint $table) {
+        Schema::create('project_user', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Workspace::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Account::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Project::class)->constrained()->cascadeOnDelete();
+            $table->float('hour_billable_rate')->default(0);
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_workspace');
+        Schema::dropIfExists('project_user');
     }
 };

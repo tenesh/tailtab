@@ -1,7 +1,7 @@
 <?php
 
+use App\Models\Account;
 use App\Models\Project;
-use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->dateTime('start_datetime')->nullable();
             $table->dateTime('end_datetime')->nullable();
+            $table->foreignIdFor(Account::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Project::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

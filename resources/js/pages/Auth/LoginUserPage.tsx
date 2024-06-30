@@ -63,14 +63,6 @@ export default function LoginUserPage({ status }: { status?: string }) {
                     >
                         Sign In
                     </Button>
-                    <div className="flex flex-col gap-2 text-center">
-                        <p>
-                            Don&apos;t have an account?{' '}
-                            <Link href="/register" className="underline">
-                                Sign Up
-                            </Link>
-                        </p>
-                    </div>
                 </form>
                 <p className="text-center text-xs font-medium max-w-lg mx-auto">
                     By continuing, you agree to Tailtab&apos;s{' '}

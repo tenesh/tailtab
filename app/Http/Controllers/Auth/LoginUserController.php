@@ -26,7 +26,9 @@ class LoginUserController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect(route('dashboard', absolute: false));
+            return $request->user()->is_admin ?
+                redirect(route('admin.dashboard', absolute: false)) :
+                redirect(route('customer.dashboard', absolute: false));
         }
 
         return back()->with('status', 'invalid-credentials');
