@@ -17,7 +17,7 @@ export interface Account {
 
 export enum Gender {
     MALE = 'male',
-    FEMALE = 'female'
+    FEMALE = 'female',
 }
 
 export enum AccountRole {
@@ -26,7 +26,6 @@ export enum AccountRole {
     PROJECT_MANAGER = 'project_manager',
     MEMBER = 'member',
 }
-
 
 export type PageProps<
     T extends Record<string, unknown> = Record<string, unknown>,

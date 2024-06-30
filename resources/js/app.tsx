@@ -20,11 +20,11 @@ createInertiaApp({
 
         let classnames = 'flex flex-col min-h-full';
 
-        const auth = props.initialPage.props.auth
+        const auth = props.initialPage.props.auth;
 
-        // @ts-ignore
-        if(auth && auth.user) {
-            classnames = 'flex flex-row min-h-full'
+        // @ts-expect-error
+        if (auth && auth.user) {
+            classnames = 'flex flex-row min-h-full';
         }
 
         root.render(

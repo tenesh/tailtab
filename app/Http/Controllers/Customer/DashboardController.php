@@ -9,6 +9,6 @@ use Inertia\Response;
 class DashboardController extends Controller
 {
     public function view(): Response {
-        return Inertia::render('Customer/DashboardPage');
+        return Inertia::render('Customer/Dashboard/Page');
     }
 }
